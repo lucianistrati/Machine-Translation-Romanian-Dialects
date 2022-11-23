@@ -13,3 +13,5 @@ Checklist:
 - Is it possible to crawl different newspapers from different regions and observe the differences?
 - Change the output of an NMT system given the corpus dialectal varieties
 - Any idea that relates to dialects and MT
+
+[![Stand With Ukraine](https://raw.githubusercontent.com/vshymanskyy/StandWithUkraine/main/banner2-direct.svg)](https://stand-with-ukraine.pp.ua)
