@@ -165,8 +165,13 @@ oltenesc_lexical_examples = {"șold": "arm",
                      " 	picior de pasăre": "cotoi"}                    
 
 
-                         
-  
+ # wikipedia above
+ # colegiu.info below                               
+                               
+ moldavian_rules = {"pi": "chi", "fe": "fi"}
+ banat_rules = {"de": "ge", "te": "ce"}
+ ardelean_rules = {"de": "ghe", "te": "che"}
+ muntenesc_rules = {"pe": "pă"}
  
  
  
