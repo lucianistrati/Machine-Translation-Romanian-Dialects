@@ -14,4 +14,6 @@ Checklist:
 - Change the output of an NMT system given the corpus dialectal varieties
 - Any idea that relates to dialects and MT
 
+Google Docs link with the plan: https://docs.google.com/document/d/1D59hMCQY28zk-DBHSgYCQkGqyU_LoACPpFt4yuIClCc/edit?usp=sharing
+
 [![Stand With Ukraine](https://raw.githubusercontent.com/vshymanskyy/StandWithUkraine/main/banner2-direct.svg)](https://stand-with-ukraine.pp.ua)
