@@ -167,3 +167,39 @@ moldavian_rules = {"pi": "chi", "fe": "fi"}
 banat_rules = {"de": "ge", "te": "ce"}
 ardelean_rules = {"de": "ghe", "te": "che"}
 muntenesc_rules = {"pe": "pă"}
+
+# 'maramuresean': {'fonetical_rules': maramuresean_,
+#      "fonetical_examples": ,
+#      "gramatical_rules":
+#     },
+
+
+dialectical_rules = {'crisanean': {'fonetical_rules': crisean_fonetical_rules,
+                                   "fonetical_examples": crisean_fonetical_examples,
+                                   "gramatical_rules": crisean_gramatical_rules
+                                   },
+                     'banatean': {"fonetical_rules": banat_rules,
+                                  "fonetical_examples": banatean_lexical_varieties_examples,
+                                  "gramatical_rules": banat_rules
+                                  },
+                     'ardelean': {'fonetical_rules': ardelenesc_fonetical_rules,
+                                  "fonetical_examples": ardelenesc_fonetical_examples,
+                                  "gramatical_rules": ardelean_rules
+                                  },
+                     'oltean': {'fonetical_rules': oltenesc_fonetical_rules,
+                                "fonetical_examples": oltenesc_fonetical_examples,
+                                "gramatical_rules": oltenesc_gramatical_examples,
+                                "lexical_examples": oltenesc_lexical_examples
+                                },
+                     'moldovean': {'fonetical_rules': moldavian_rules,
+                                   "fonetical_examples": moldovan_lexical_varieties_examples,
+                                   "gramatical_rules": moldavian_rules
+                                   },
+                     'muntean': {'fonetical_rules': muntenesc_fonetical_rules,
+                                 "fonetical_examples": muntenesc_fonetical_examples,
+                                 "gramatical_rules": muntenesc_gramatical_rules,
+                                 "rules": muntenesc_rules,
+                                 "lexical_examples": muntenesc_lexical_examples,
+                                 "gramatical_examples": muntenesc_gramatical_examples
+                                 }
+                     }
