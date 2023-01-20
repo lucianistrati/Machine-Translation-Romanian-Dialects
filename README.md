@@ -10,7 +10,7 @@ Example paper approaching dialectal info: https://aclanthology.org/Y18-1001.pdf
 Checklist:
 - Can we introduce known rules to change an input sentence from passé composé to passé simple in romanian?
 - Can we use the existing dexlonline.ro database to find the regionalisms and replace?
-- Is it possible to crawl different newspapers from different regions and observe the differences?
+- Is it possible to crawl different newspapers from different regions and observe the differences? - cuvinte care sunt mai des foolosite
 - Change the output of an NMT system given the corpus dialectal varieties
 - Any idea that relates to dialects and MT
 
