@@ -7,3 +7,11 @@ def dexonline_search(query_search: str, engine: str) -> List[str]:
     or empty list if the word does not exist in that engine dictionary
     """
     pass
+
+
+def main():
+    pass
+
+
+if __name__ == "__main__":
+    main()

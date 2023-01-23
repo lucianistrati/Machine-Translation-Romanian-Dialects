@@ -8,7 +8,7 @@ books_folderpath = "data/books"
 
 videos_folderpath = "data/videos"
 
-classes = ["crisanean", "maramuresean", "banatean", "ardelean", "oltean", "moldovean", "muntean"]
+classes = ["crisanean", "maramuresean", "banatean", "ardelean", "oltean", "moldovean", "muntean", "timocean"]
 
 class_to_book = {'crisanean': [''],
                  'maramuresean': ["dstef_antologie-de-folclor-din-maramures.pdf"],
@@ -16,7 +16,8 @@ class_to_book = {'crisanean': [''],
                  'ardelean': ['Ion_Pop_Reteganul_Poveti_ardeleneti_Ba.pdf'],
                  'oltean': ['Dilibau. Povesti oltenesti - Cristiana Belodan.pdf'],
                  'moldovean': ['Moldovan_in_Ukraine_01.pdf'],
-                 'muntean': ['']}
+                 'muntean': [''],
+                 "timocean": [""]}
 
 class_to_video = {'crisanean': [''],
                   'maramuresean': [''],
@@ -29,5 +30,15 @@ class_to_video = {'crisanean': [''],
                                 "Vox pop Unirea cu România şi preţul ei.mp4",
                                 "Vox populi Tinerii despre România şi Unire.mp4"],
                   'muntean': [''],
-                  'timoc': ['About our village and our language – Timok Romanian (Vlach) Collection.mp4']}
+                  'timocean': ['About our village and our language – Timok Romanian (Vlach) Collection.mp4']}
 
+def load_data():
+    pass
+
+
+def main():
+    pass
+
+
+if __name__ == "__main__":
+    main()
