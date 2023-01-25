@@ -43,6 +43,7 @@ video_to_alias = {'Curs de dialect ardelenesc!.mp4': 'ardelenesc.txt',
 
 def load_data(filepath: str):
     to_str = False
+    print(filepath)
     if filepath.endswith('.txt'):
         texts = []
         if "vatis" in filepath:
@@ -54,11 +55,13 @@ def load_data(filepath: str):
         elif "sonix" in filepath:
             with open(filepath, "r") as f:
                 lines = f.readlines()
+                # print(len(lines))
                 for line in lines:
                     line = line[line.find(" "):]
                     tokens = [token for token in line.split()
                               if token.startswith("[") is False
                               and token.endswith("]") is False]
+                    # print(len(tokens))
                     texts.append(" ".join(tokens))
         if to_str:
             return " ".join(texts)
@@ -73,38 +76,45 @@ def load_data(filepath: str):
         for page in reader.pages:
             # extracting text from page
             text = page.extract_text()
+            # print(text)
             whole_text.append(text)
         if to_str:
             return " ".join(whole_text)
+        # print(len(whole_text))
+        return whole_text
     else:
         raise Exception("Unsupported format!")
 
 
 def main():
     books_contents = []
-    for file in os.listdir("data/books"):
+    for file in sorted(os.listdir("data/books")):
         filepath = os.path.join("data/books", file)
         texts = load_data(filepath)
         books_contents.append(texts)
+
     print(len(books_contents))
-    with open("data/books/all_books_contents.txt", "w") as f:
+
+    with open("data/all_books_contents.txt", "w") as f:
         f.write(str(books_contents))
 
     sonix_transcriptions = []
-    for file in os.listdir("data/transcriptions/sonix"):
-        filepath = os.path.join("data/books", file)
+    for file in sorted(os.listdir("data/transcriptions/sonix")):
+        filepath = os.path.join("data/transcriptions/sonix/", file)
         texts = load_data(filepath)
         sonix_transcriptions.append(texts)
+
     print(len(sonix_transcriptions))
 
     with open("data/transcriptions/sonix_transcriptions.txt", "w") as f:
         f.write(str(sonix_transcriptions))
 
     vatis_transcriptions = []
-    for file in os.listdir("data/transcriptions/vatis_tech"):
-        filepath = os.path.join("data/books", file)
+    for file in sorted(os.listdir("data/transcriptions/vatis_tech")):
+        filepath = os.path.join("data/transcriptions/vatis_tech/", file)
         texts = load_data(filepath)
         vatis_transcriptions.append(texts)
+
     print(len(vatis_transcriptions))
 
     with open("data/transcriptions/vatis_transcriptions.txt", "w") as f:

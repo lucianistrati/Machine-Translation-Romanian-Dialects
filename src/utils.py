@@ -211,3 +211,51 @@ dialectical_rules = {'crisanean': {'fonetical_rules': crisanean_fonetical_rules,
                                   "gramatical_rules": None
                                   },
                      }
+
+classes = ["crisanean", "maramuresean", "banatean", "ardelean", "oltean", "moldovean", "muntean", "timocean"]
+
+class_to_book = {'crisanean': [''],
+                 'maramuresean': ["dstef_antologie-de-folclor-din-maramures.pdf"],
+                 'banatean': ['Poezi-in-grai-banatean-vol1.pdf'],
+                 'ardelean': ['Ion_Pop_Reteganul_Poveti_ardeleneti_Ba.pdf'],
+                 'oltean': ['Dilibau. Povesti oltenesti - Cristiana Belodan.pdf'],
+                 'moldovean': ['Moldovan_in_Ukraine_01.pdf'],
+                 'muntean': [''],
+                 "timocean": [""]}
+
+book_to_class = {'dstef_antologie-de-folclor-din-maramures.pdf': 'maramuresean',
+                 'Poezi-in-grai-banatean-vol1.pdf': 'banatean',
+                 'Ion_Pop_Reteganul_Poveti_ardeleneti_Ba.pdf': 'ardelean',
+                 'Dilibau. Povesti oltenesti - Cristiana Belodan.pdf': 'oltean',
+                 'Moldovan_in_Ukraine_01.pdf': 'moldovean'}
+
+class_to_video = {'crisanean': [''],
+                  'maramuresean': [''],
+                  'banatean': [''],
+                  'ardelean': ['Curs de dialect ardelenesc!.mp4',
+                               'Curs de dialect ardelenesc!suduieli si blesteme!.mp4'],
+                  'oltean': [''],
+                  'moldovean': ["Stirile in limba moldoveneasca.mp4",
+                                'Igor Dodon explică strategia prin care doreşte să mute graniţa dintre România şi Republica Moldova.mp4',
+                                "Vox pop Unirea cu România şi preţul ei.mp4",
+                                "Vox populi Tinerii despre România şi Unire.mp4"],
+                  'muntean': [''],
+                  'timocean': ['About our village and our language – Timok Romanian (Vlach) Collection.mp4']}
+
+video_to_class = {'Curs de dialect ardelenesc!.mp4': 'ardelean',
+                  'Curs de dialect ardelenesc!suduieli si blesteme!.mp4': 'ardelean',
+                  'Stirile in limba moldoveneasca.mp4': 'moldovean',
+                  'Igor Dodon explică strategia prin care doreşte să mute graniţa dintre România şi Republica Moldova.mp4': 'moldovean',
+                  'Vox pop Unirea cu România şi preţul ei.mp4': 'moldovean',
+                  'Vox populi Tinerii despre România şi Unire.mp4': 'moldovean',
+                  'About our village and our language – Timok Romanian (Vlach) Collection.mp4': 'timocean'}
+
+
+video_to_alias = {'Curs de dialect ardelenesc!.mp4': 'ardelenesc.txt',
+                  'Curs de dialect ardelenesc!suduieli si blesteme!.mp4': 'ardelenesc_suduieli.txt',
+                  'Stirile in limba moldoveneasca.mp4': 'stiri_moldoveneasca.txt',
+                  'Igor Dodon explică strategia prin care doreşte să mute graniţa dintre România şi Republica Moldova.mp4': 'dodon.txt',
+                  'Vox pop Unirea cu România şi preţul ei.mp4': 'vox_pop_pretul_unirii.txt',
+                  'Vox populi Tinerii despre România şi Unire.mp4': 'vox_pop_romania_unire.txt',
+                  'About our village and our language – Timok Romanian (Vlach) Collection.mp4': 'timok.txt'}
+
