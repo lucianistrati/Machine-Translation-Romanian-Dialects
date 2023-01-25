@@ -51,7 +51,7 @@ def main():
             sentence = ""
             for token in doc:
                 sentence += (token.text + " ")
-                if len(sentence) > random.randint(100, 300):
+                if len(sentence) > random.randint(50, 300):
                     sentences.append(sentence)
                     sentence = ""
             for sentence in sentences:
@@ -86,6 +86,21 @@ def main():
     print("F1 weighted:", f1_score(y_pred, y_test, average="weighted"))
 
     print(classification_report(y_pred, y_test, target_names=targets_names))
+
+    import joblib
+
+    joblib.dump(filename="checkpoints/vectorizer.joblib", value=cv)
+    joblib.dump(filename="checkpoints/model.joblib", value=model)
+
+    vectorizer = joblib.load("checkpoints/vectorizer.joblib")
+    model = joblib.load("checkpoints/model.joblib")
+
+    text = "Oiță bătrână cu brâul de lână"
+
+    vectorized = vectorizer.transform(text)
+    prediction = model.predict(text)
+
+    print(prediction)
 
 
 if __name__ == "__main__":
