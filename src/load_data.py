@@ -41,8 +41,7 @@ video_to_alias = {'Curs de dialect ardelenesc!.mp4': 'ardelenesc.txt',
                   'Vox populi Tinerii despre România şi Unire.mp4': 'vox_pop_romania_unire.txt',
                   'About our village and our language – Timok Romanian (Vlach) Collection.mp4': 'timok.txt'}
 
-def load_data(filepath: str):
-    to_str = False
+def load_data(filepath: str, to_str: bool = False):
     print(filepath)
     if filepath.endswith('.txt'):
         texts = []
