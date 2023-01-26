@@ -7,6 +7,13 @@ from sklearn.model_selection import train_test_split
 from sklearn.feature_extraction.text import CountVectorizer
 from src.load_data import load_data
 from nltk.tokenize import sent_tokenize
+import nltk
+import spacy
+import random
+from collections import Counter
+
+from sklearn.svm import SVC
+from sklearn.metrics import f1_score, classification_report
 
 import numpy as np
 
@@ -33,12 +40,10 @@ def main():
 
     targets_names = ["maramuresean", "banatean", "ardelean", "oltean", "moldovean"]
     X, y = [], []
-    import nltk
     # nltk.download("punkt")
     # nltk.download('averaged_perceptron_tagger')
     # nltk.download('all')
-    import spacy
-    import random
+
     nlp = spacy.load("ro_core_news_sm")
     for (filename, label) in book_to_class.items():
         filepath = os.path.join("data/books/", filename)
@@ -71,18 +76,14 @@ def main():
     np.save(file="data/X.npy", allow_pickle=True, arr=np.array(X))
     np.save(file="data/y.npy", allow_pickle=True, arr=np.array(y))
 
-    from collections import Counter
     print("Number of sentences overall: ", len(X), len(y))
     print("Classes distribution: ", Counter(y))
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state = 42)
 
-    from sklearn.svm import SVC
-    from sklearn.metrics import f1_score, classification_report
-
     cv = CountVectorizer()
     X_train = cv.fit_transform(X_train)
     X_test = cv.transform(X_test)
-    model = SVC()
+    model = SVC(class_weight="balanced")
 
     model.fit(X_train, y_train)
     y_pred = model.predict(X_test)

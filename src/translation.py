@@ -4,6 +4,7 @@ translation inference
 from src.utils import dialectical_rules, dialect_to_formal_dict
 import random
 
+from src.detect_dialect import detect_dialect
 def text_to_speech(text):
     speech = text
     return speech
@@ -195,7 +196,6 @@ def translate_from_formal_to_dialect(text, final_dialect, modality: str="text"):
     return text
 
 
-# from src.detect_dialect import detect_dialect
 def translate(text: str, initial_dialect: str, final_dialect: str, modality: str="text", infer_dialect: bool = False):
     """
 
@@ -205,10 +205,10 @@ def translate(text: str, initial_dialect: str, final_dialect: str, modality: str
     :param modality:
     :return:
     """
-    # if infer_dialect:
-    #     detected_dialect = detect_dialect(text)
-    #     if detected_dialect == initial_dialect:
-    #         print("The dialect was inferred correctly by the model!")
+    if infer_dialect:
+        detected_dialect = detect_dialect(text)
+        if detected_dialect == initial_dialect:
+            print("The dialect was inferred correctly by the model!")
 
     text, res = to_lower(text)
     if initial_dialect == final_dialect:
