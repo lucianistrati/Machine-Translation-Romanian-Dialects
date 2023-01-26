@@ -8,8 +8,8 @@ from spacy.matcher import Matcher
 
 nlp = spacy.load("ro_core_news_lg")
 folder = Path(__file__).parent
-conjugation = pd.read_json(os.path.join(folder, 'conjugation-ro.json'))
-verbs = pd.read_json(os.path.join(folder, 'verbs-ro.json'))
+conjugation = pd.read_json(os.path.join(folder, 'conjugari.json'))
+verbs = pd.read_json(os.path.join(folder, 'verbe.json'))
 
 
 def _get_matches(doc):
