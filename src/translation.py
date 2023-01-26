@@ -1,7 +1,7 @@
 """
 translation inference
 """
-from src.utils import dialectical_rules
+from src.utils import dialectical_rules, dialect_to_formal_dict
 import random
 
 def text_to_speech(text):
@@ -18,6 +18,11 @@ def translate_from_dialect_to_formal(text, initial_dialect, modality: str="text"
     """
     fonetical_rules = dialectical_rules[initial_dialect]["fonetical_rules"]
     gramatical_rules = dialectical_rules[initial_dialect]["gramatical_rules"]
+
+    if initial_dialect in dialect_to_formal_dict.keys():
+        final_dialect_words = dialect_to_formal_dict[initial_dialect]
+        for (dialect_word, formal_word) in final_dialect_words.items():
+            gramatical_rules[dialect_word] = formal_word
 
     if "fonetical_examples" in dialectical_rules[initial_dialect]:
         fonetical_examples = dialectical_rules[initial_dialect]["fonetical_examples"]
@@ -61,6 +66,11 @@ def translate_from_formal_to_dialect(text, final_dialect, modality: str="text"):
     """
     fonetical_rules = dialectical_rules[final_dialect]["fonetical_rules"]
     gramatical_rules = dialectical_rules[final_dialect]["gramatical_rules"]
+
+    if final_dialect in dialect_to_formal_dict.keys():
+        final_dialect_words = dialect_to_formal_dict[final_dialect]
+        for (dialect_word, formal_word) in final_dialect_words.items():
+            gramatical_rules[formal_word] = dialect_word
 
     if "fonetical_examples" in dialectical_rules[final_dialect]:
         fonetical_examples = dialectical_rules[final_dialect]["fonetical_examples"]

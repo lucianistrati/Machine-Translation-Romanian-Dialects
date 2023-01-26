@@ -250,7 +250,6 @@ video_to_class = {'Curs de dialect ardelenesc!.mp4': 'ardelean',
                   'Vox populi Tinerii despre România şi Unire.mp4': 'moldovean',
                   'About our village and our language – Timok Romanian (Vlach) Collection.mp4': 'timocean'}
 
-
 video_to_alias = {'Curs de dialect ardelenesc!.mp4': 'ardelenesc.txt',
                   'Curs de dialect ardelenesc!suduieli si blesteme!.mp4': 'ardelenesc_suduieli.txt',
                   'Stirile in limba moldoveneasca.mp4': 'stiri_moldoveneasca.txt',
@@ -259,3 +258,54 @@ video_to_alias = {'Curs de dialect ardelenesc!.mp4': 'ardelenesc.txt',
                   'Vox populi Tinerii despre România şi Unire.mp4': 'vox_pop_romania_unire.txt',
                   'About our village and our language – Timok Romanian (Vlach) Collection.mp4': 'timok.txt'}
 
+import pandas as pd
+
+df = pd.read_csv("data/RoAcReL.csv")
+
+print(df.columns)
+print(set(df["County/Region"]))
+
+words = df['Word'].to_list()
+meanings = df["Meaning"].to_list()
+origins = df["County/Region"].to_list()
+
+classes_ = ['oltean', 'moldovean', 'muntean', 'ardelean', 'maramuresean', 'banatean']
+
+dialect_to_formal_dict = {'oltean': {}, 'moldovean': {}, 'muntean': {},
+                          'ardelean': {}, 'maramuresean': {}, 'banatean': {}}
+
+county_region_to_dialect = {'Moldova, Transilvania': ["moldovean", "ardelean"],
+                            'Maramureș': ["maramuresean"],
+                            'Dobrogea': ["muntean"],
+                            'Comuna Șerbănești, Județul Olt': ["oltean"],
+                            'Bucovina': ["moldovean"],
+                            'Bucovina / Republica Moldova': [],
+                            'Oltenia': ["oltean"],
+                            'Sudul Moldovei': ["moldovean"],
+                            'Comuna Suharău, Județul Botoșani': [],
+                            'Muntenia': ["muntean"],
+                            'Banat': ["banatean"],
+                            'Moldova': ["moldovean"],
+                            'Transilvania': ["ardelean"],
+                            'Ardeal': ["ardelean"]}
+
+cnt = 0
+print(len(df))
+for (word, meaning, origin) in zip(words, meanings, origins):
+    if origin != origin:
+        continue
+    cnt += 1
+    origins_ = county_region_to_dialect[origin]
+    for origin in origins_:
+        dialect_to_formal_dict[origin][meaning] = word
+
+print(cnt)
+print(f"For {len(df) - cnt} words out of the {len(df)} in RoAcReL there is no origin!")
+
+"""
+ierarchie/cascada de aplicata reguli
+
+intai pe cuvinte
+
+apoi pe grupuri de litere sortate descrescator, de la grupuri de 3 litere, la 2 litere, la 1 litera
+"""

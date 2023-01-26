@@ -17,10 +17,18 @@ from wordcloud import WordCloud, STOPWORDS, ImageColorGenerator
 
 import matplotlib.pyplot as plt
 
+some_other_stopwords = ["și", "la", "cu", "de", "mai", "pe", "se",
+                        "în", "din", "care", "ce", "un", "să", "nu",
+                        "lui", "o", "el", "după", "ea", "tot",
+                        "numai", "ale", "nici", "să", "ca",
+                        "o", "p", "t", "le", "te", "dă", "să",
+                        "n", "fi", "s o", "s", "nu", "ne", "toate"]
 
 """
 TODO remove moldovan_in_ukraine and replace with something else that is relevant
 """
+
+
 def visualize():
     with open("data/all_books_contents.txt", "r") as f:
         books_contents = f.read()
@@ -41,12 +49,7 @@ def visualize():
 
         tokens = [token.text for token in doc if token.is_stop is False and
                   len(token.text) >= 2 and token.text[0] < "A" or token.text[0] > "Z"
-                  and token.text not in ["și", "la", "cu", "de", "mai", "pe", "se",
-                                         "în", "din", "care", "ce", "un", "să", "nu",
-                                         "lui", "o", "el", "după", "ea", "tot",
-                                         "numai", "ale", "nici", "să", "ca",
-                                         "o", "p", "t", "le", "te", "dă", "să",
-                                         "n", "fi", "s o", "s", "nu", "ne", "toate"]]
+                  and token.text not in some_other_stopwords]
         text = " ".join(tokens)
         print(file, len(text))
         # books_contents.append(texts)
