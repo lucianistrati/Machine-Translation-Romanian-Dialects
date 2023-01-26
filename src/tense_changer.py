@@ -1,5 +1,24 @@
-# waiting for some rules from Anca Dinu
 import argparse
+import spacy
+from spacy.lang.ro.examples import sentences
+import json
+import pandas as pd
+from spacy.matcher import Matcher
+
+nlp = spacy.load("ro_core_news_lg")
+
+conjugation = pd.read_json('conjugation-ro.json')
+verbs = pd.read_json('verbs-ro.json')
+
+
+def _get_matches(text):
+    pattern = [[{'POS': 'AUX', "LEMMA": "avea"}, {'POS': 'VERB'}]]
+    matcher = Matcher(nlp.vocab)
+    matcher.add("verb-phrases", pattern)
+    doc = nlp(text)
+    matches = matcher(doc)
+
+    return matches
 
 
 def _build_parser():
@@ -14,7 +33,8 @@ def _build_parser():
     return args
 
 
-def main(sentence: str):
+def main(text: str):
+    matches = _get_matches(text)
     return sentence
 
 
