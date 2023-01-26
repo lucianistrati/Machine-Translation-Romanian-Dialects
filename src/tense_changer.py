@@ -36,8 +36,10 @@ def _build_parser():
     args = parser.parse_args()
     return args
 
+
 def passe_simple_to_passe_compose(text: str) -> str:
     pass
+
 
 def passe_compose_to_passe_simple(text: str) -> str:
     pass

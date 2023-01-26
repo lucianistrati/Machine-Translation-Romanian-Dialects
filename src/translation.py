@@ -195,7 +195,8 @@ def translate_from_formal_to_dialect(text, final_dialect, modality: str="text"):
     return text
 
 
-def translate(text: str, initial_dialect: str, final_dialect: str, modality: str="text"):
+from src.detect_dialect import detect_dialect
+def translate(text: str, initial_dialect: str, final_dialect: str, modality: str="text", infer_dialect: bool = False):
     """
 
     :param text:
@@ -204,6 +205,11 @@ def translate(text: str, initial_dialect: str, final_dialect: str, modality: str
     :param modality:
     :return:
     """
+    if infer_dialect:
+        detected_dialect = detect_dialect(text)
+        if detected_dialect == initial_dialect:
+            print("The dialect was inferred correctly by the model!")
+
     if initial_dialect == final_dialect:
         return "You need to translate between different dialects!"
 
@@ -225,23 +231,25 @@ def translate(text: str, initial_dialect: str, final_dialect: str, modality: str
 
 
 def main():
+    infer_dialect = True
+
     text = "Ana are două picioare"
-    print(translate(text, "formal", "moldovean", modality="text"))
+    print(translate(text, "formal", "moldovean", modality="text", infer_dialect=infer_dialect))
 
     text = "Ion este pilot"
-    print(translate(text, "formal", "moldovean", modality="text"))
+    print(translate(text, "formal", "moldovean", modality="text", infer_dialect=infer_dialect))
 
     text = "No apăi unde merem amu?"
-    print(translate(text, "ardelean", "formal", modality="text"))
+    print(translate(text, "ardelean", "formal", modality="text", infer_dialect=infer_dialect))
 
     text = "Mă dusei să trec la Olt"
-    print(translate(text, "formal", "oltean", modality="text"))
+    print(translate(text, "formal", "oltean", modality="text", infer_dialect=infer_dialect))
 
     text = "Și fași uăi?"
-    print(translate(text, "moldovean", "formal", modality="text"))
+    print(translate(text, "moldovean", "formal", modality="text", infer_dialect=infer_dialect))
 
     text = "Nu am decât zece lei la mine. Mă duc pă oraș mai pă seară, dupe mă duc acasă."
-    print(translate(text, "formal", "ardelean", modality="text"))
+    print(translate(text, "formal", "ardelean", modality="text", infer_dialect=infer_dialect))
 
 
 if __name__ == "__main__":
