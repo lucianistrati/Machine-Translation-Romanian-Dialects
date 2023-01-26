@@ -41,7 +41,14 @@ video_to_alias = {'Curs de dialect ardelenesc!.mp4': 'ardelenesc.txt',
                   'Vox populi Tinerii despre România şi Unire.mp4': 'vox_pop_romania_unire.txt',
                   'About our village and our language – Timok Romanian (Vlach) Collection.mp4': 'timok.txt'}
 
-def load_data(filepath: str, to_str: bool = False):
+def remove_diacritics(text: str):
+    diacritics = "ăâîșțĂȘȚÎÂ"
+    for d in diacritics:
+        text = text.replace(d, "")
+    return text
+
+
+def load_data(filepath: str, to_str: bool = False, strip: bool = False, no_diacritics: bool = False):
     print(filepath)
     if filepath.endswith('.txt'):
         texts = []
@@ -50,6 +57,13 @@ def load_data(filepath: str, to_str: bool = False):
                 lines = f.readlines()
                 for line in lines:
                     if len(line) > 0 and line.startswith("[") is False:
+                        if strip:
+                            line = line.strip()
+                            while "  " in line:
+                                line = line.replace("  ", "")
+                            line = line.replace("\n", "")
+                        if no_diacritics:
+                            line = remove_diacritics(line)
                         texts.append(line)
         elif "sonix" in filepath:
             with open(filepath, "r") as f:
@@ -60,8 +74,28 @@ def load_data(filepath: str, to_str: bool = False):
                     tokens = [token for token in line.split()
                               if token.startswith("[") is False
                               and token.endswith("]") is False]
-                    # print(len(tokens))
-                    texts.append(" ".join(tokens))
+                    line = " ".join(tokens)
+                    if strip:
+                        line = line.strip()
+                        while "  " in line:
+                            line = line.replace("  ", "")
+                        line = line.replace("\n", "")
+                    if no_diacritics:
+                        line = remove_diacritics(line)
+                    texts.append(line)
+        elif "annotations" in filepath:
+            with open(filepath, "r") as f:
+                lines = f.readlines()
+                for line in lines:
+                    if len(line) > 0:
+                        if strip:
+                            line = line.strip()
+                            while "  " in line:
+                                line = line.replace("  ", "")
+                            line = line.replace("\n", "")
+                        if no_diacritics:
+                            line = remove_diacritics(line)
+                        texts.append(line)
         if to_str:
             return " ".join(texts)
         return texts

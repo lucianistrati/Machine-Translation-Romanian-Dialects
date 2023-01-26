@@ -3,3 +3,4 @@ data/
 src/__pycache__/utils.cpython-310.pyc
 src/__pycache__/
 checkpoints/
+src/__pycache__/load_data.cpython-310.pyc

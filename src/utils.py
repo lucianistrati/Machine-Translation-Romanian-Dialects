@@ -99,28 +99,28 @@ moldovean_lexical_varieties_examples = {"pătlăgică": "roșie",
 
 # https://ro.wikipedia.org/wiki/Graiul_muntenesc
 
-muntean_fonetical_examples = {" ușă ": " ușe ",
-                              " lojă ": " loje ",
-                              " deștept ": " dăștept ",
+muntean_fonetical_examples = {"ușă": "ușe",
+                              "lojă": "loje",
+                              "deștept ": "dăștept",
                               " din ": " dân ",
-                              " fetele ": " fetili ",
-                              " caprele ": " caprili "}
+                              "fetele": "fetili",
+                              "caprele": "caprili"}
 
 muntean_fonetical_rules = {"ă ": "e ",
                            "e": ["ă", "i"],
                            "i": "â"}
 
-muntean_gramatical_examples = {"n-am decât două mere": "am decât două mere",
-                               "nu mă mai duc": "nu mai mă duc",
-                               "mănâncă pâine": " 	mănâncă la pâine",
-                               " 	omul care vine": "omul de vine",
-                               "floarea de pe masă": "floarea după/dupe masă",
-                               "grinda este așezată aici": "grinda vine așezată aici",
-                               "începe să crească": " 	vine și/de crește",
-                               "era să cad": " 	am vrut să cad",
-                               " 	ei/ele au venit": "ei/ele a venitără",
-                               "ei/ele vor bea": "ei/ele va bea",
-                               "ei/ele beau": "ei/ele bea"}
+muntean_gramatical_examples = {" n-am decât două mere ": " am decât două mere ",
+                               " nu mă mai duc ": " nu mai mă duc ",
+                               " mănâncă pâine": " mănâncă la pâine ",
+                               " omul care vine ": " omul de vine ",
+                               " floarea de pe masă": " floarea după/dupe masă ",
+                               " grinda este așezată aici": " grinda vine așezată aici ",
+                               " începe să crească": " 	vine și/de crește ",
+                               " era să cad": " am vrut să cad ",
+                               " ei/ele au venit ": " ei/ele a venitără ",
+                               " ei/ele vor bea ": " ei/ele va bea ",
+                               " ei/ele beau ": " ei/ele bea "}
 
 muntean_gramatical_rules = {"au": "a", "de pe": ["după", "dupe"], " care ": " de "}
 
@@ -156,9 +156,9 @@ oltenesc_gramatical_examples = {"am cântat": "cântai",
                                 "aici": ["ici", "aici", "aci", "acia"],
                                 "nu cântați!": "nu cântareți!"}
 
-oltenesc_lexical_examples = {"șold": "arm",
-                             "a strănuta": "a străfiga",
-                             " 	picior de pasăre": "cotoi"}
+oltenesc_lexical_examples = {" șold ": " ar m",
+                             " a strănuta ": " a străfiga ",
+                             " 	picior de pasăre": " cotoi "}
 
 # wikipedia above
 # colegiu.info below
@@ -211,6 +211,26 @@ dialectical_rules = {'crisanean': {'fonetical_rules': crisanean_fonetical_rules,
                                   "gramatical_rules": None
                                   },
                      }
+
+def invert_dict(d):
+    inv = dict()
+    for (k, v) in d.items():
+        if isinstance(v, str):
+            inv[v] = k
+        elif isinstance(v, list):
+            v = list(set(v))
+            for elem in v:
+                inv[elem] = k
+    return inv
+
+
+for (k, v) in dialectical_rules.items():
+    dialect_dict = v
+    for (k_, v_) in dialect_dict.items():
+        a = v_
+        if isinstance(a, dict):
+            a = invert_dict(a)
+        dialectical_rules[k][k_] = a
 
 classes = ["crisanean", "maramuresean", "banatean", "ardelean", "oltean", "moldovean", "muntean", "timocean"]
 
@@ -309,13 +329,13 @@ county_region_to_dialect = {'Moldova, Transilvania': ["moldovean", "ardelean"],
 
 cnt = 0
 print(len(df))
-for (word, meaning, origin) in zip(words, meanings, origins):
+for (dialect_word, formal_word, origin) in zip(words, meanings, origins):
     if origin != origin:
         continue
     cnt += 1
     origins_ = county_region_to_dialect[origin]
     for origin in origins_:
-        dialect_to_formal_dict[origin][meaning] = word
+        dialect_to_formal_dict[origin][dialect_word] = formal_word
 
 print(cnt)
 print(f"For {len(df) - cnt} words out of the {len(df)} in RoAcReL there is no origin!")

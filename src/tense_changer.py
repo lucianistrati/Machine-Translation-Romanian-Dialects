@@ -5,7 +5,11 @@ import json
 import pandas as pd
 from spacy.matcher import Matcher
 
-nlp = spacy.load("ro_core_news_lg")
+small_pipeline = True
+if small_pipeline:
+    nlp = spacy.load("ro_core_news_sm")
+else:
+    nlp = spacy.load("ro_core_news_lg")
 
 conjugation = pd.read_json('conjugation-ro.json')
 verbs = pd.read_json('verbs-ro.json')
@@ -31,6 +35,12 @@ def _build_parser():
     )
     args = parser.parse_args()
     return args
+
+def passe_simple_to_passe_compose(text: str) -> str:
+    pass
+
+def passe_compose_to_passe_simple(text: str) -> str:
+    pass
 
 
 def main(text: str):
