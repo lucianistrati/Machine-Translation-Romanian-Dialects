@@ -271,8 +271,26 @@ origins = df["County/Region"].to_list()
 
 classes_ = ['oltean', 'moldovean', 'muntean', 'ardelean', 'maramuresean', 'banatean']
 
-dialect_to_formal_dict = {'oltean': {}, 'moldovean': {}, 'muntean': {},
-                          'ardelean': {}, 'maramuresean': {}, 'banatean': {}}
+dialect_to_formal_dict = {'oltean': {},
+                          'moldovean': {},
+                          'muntean': {},
+                          'ardelean': {},
+                          'maramuresean': {},
+                          'banatean': {}}
+
+specifical_change_stuff_rules_dict = {'oltean': {},
+                                      'moldovean': {},
+                                      'muntean': {},
+                                      'ardelean': {},
+                                      'maramuresean': {},
+                                      'banatean': {}}
+
+exceptions_to_rules_dict = {'oltean': {},
+                            'moldovean': {},
+                            'muntean': {},
+                            'ardelean': {},
+                            'maramuresean': {},
+                            'banatean': {}}
 
 county_region_to_dialect = {'Moldova, Transilvania': ["moldovean", "ardelean"],
                             'Maramureș': ["maramuresean"],

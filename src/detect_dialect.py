@@ -30,6 +30,12 @@ def main():
     text = "Mă dusei să trec la Olt"
     print(detect_dialect(text))
 
+    text = "Și fași uăi?"
+    print(detect_dialect(text))
+
+    text = "Nu am decât zece lei la mine. Mă duc pă oraș mai pă seară, dupe mă duc acasă."
+    print(detect_dialect(text))
+
 
 if __name__ == "__main__":
     main()

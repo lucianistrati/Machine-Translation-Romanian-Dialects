@@ -61,8 +61,12 @@ def main():
                 # X.append(sentence.text)
                 # y.append(idx)
 
-    # np.save(file="data/X.npy", allow_pickle=True, arr=np.array(X))
-    # np.save(file="data/y.npy", allow_pickle=True, arr=np.array(y))
+    def load_X_y():
+        X = np.load(file="data/X.npy", allow_pickle=True)
+        y = np.load(file="data/y.npy", allow_pickle=True)
+        return X, y
+
+    load_X_y()
 
     np.save(file="data/X.npy", allow_pickle=True, arr=np.array(X))
     np.save(file="data/y.npy", allow_pickle=True, arr=np.array(y))
