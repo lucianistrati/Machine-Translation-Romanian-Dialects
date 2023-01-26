@@ -163,7 +163,7 @@ oltenesc_lexical_examples = {" șold ": " ar m",
 # wikipedia above
 # colegiu.info below
 
-moldavean_rules = {"pi": "chi", "fe": "fi"}
+moldavean_rules = {"pi": "chi", "fe": "fi", "ci": "și"}
 banatean_rules = {"de": "ge", "te": "ce"}
 ardelean_rules = {"de": "ghe", "te": "che"}
 muntean_rules = {"pe": "pă"}

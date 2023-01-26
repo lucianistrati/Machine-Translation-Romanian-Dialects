@@ -45,3 +45,15 @@ data_test = (
 def test_main(input, expected):
     actual = tense_changer.main(input)
     assert actual == expected
+
+
+data_test_reverse = (
+    (
+        "eu trecui prin fata casei.",
+        "eu am trecut prin fata casei."
+    ),
+)
+@pytest.mark.parametrize("input, expected", data_test_reverse)
+def test_main(input, expected):
+    actual = tense_changer.main(input, True)
+    assert actual == expected

@@ -10,7 +10,7 @@ def text_to_speech(text):
 
 import pdb
 import random
-from src.tense_changer import *
+from src.oltenizator.tense_changer import *
 
 
 def translate_from_dialect_to_formal(text, initial_dialect, modality: str="text"):
@@ -195,7 +195,7 @@ def translate_from_formal_to_dialect(text, final_dialect, modality: str="text"):
     return text
 
 
-from src.detect_dialect import detect_dialect
+# from src.detect_dialect import detect_dialect
 def translate(text: str, initial_dialect: str, final_dialect: str, modality: str="text", infer_dialect: bool = False):
     """
 
@@ -205,11 +205,12 @@ def translate(text: str, initial_dialect: str, final_dialect: str, modality: str
     :param modality:
     :return:
     """
-    if infer_dialect:
-        detected_dialect = detect_dialect(text)
-        if detected_dialect == initial_dialect:
-            print("The dialect was inferred correctly by the model!")
+    # if infer_dialect:
+    #     detected_dialect = detect_dialect(text)
+    #     if detected_dialect == initial_dialect:
+    #         print("The dialect was inferred correctly by the model!")
 
+    text, res = to_lower(text)
     if initial_dialect == final_dialect:
         return "You need to translate between different dialects!"
 
@@ -223,11 +224,28 @@ def translate(text: str, initial_dialect: str, final_dialect: str, modality: str
     else:
         final_translated_text = formal_text
 
+    final_translated_text = back_to_normal(final_translated_text, res)
+
     if modality == "speech":
         speech = text_to_speech(final_translated_text)
         return speech
 
     return final_translated_text
+
+def to_lower(text):
+    res = []
+    for i, c in enumerate(text):
+        if c.isupper() :
+            res.append(i)
+    return text.lower(), res
+
+
+def back_to_normal(text, res):
+    text = list(text)
+    for i in res:
+        text[i] = text[i].upper()
+
+    return "".join(text)
 
 
 def main():
@@ -242,8 +260,8 @@ def main():
     text = "No apăi unde merem amu?"
     print(translate(text, "ardelean", "formal", modality="text", infer_dialect=infer_dialect))
 
-    text = "Mă dusei să trec la Olt"
-    print(translate(text, "formal", "oltean", modality="text", infer_dialect=infer_dialect))
+    text = "Eu trecui prin fata casei."
+    print(translate(text, "oltean", "formal", modality="text", infer_dialect=infer_dialect))
 
     text = "Și fași uăi?"
     print(translate(text, "moldovean", "formal", modality="text", infer_dialect=infer_dialect))
