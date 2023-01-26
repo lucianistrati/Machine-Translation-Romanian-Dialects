@@ -41,3 +41,4 @@ def main(text: str):
 if __name__ == "__main__":
     args = _build_parser()
     main(args.sentence)
+
