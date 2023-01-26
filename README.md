@@ -1,4 +1,4 @@
-# Oltenizator, Moldovenizator, Ardelenizator, Dialectal MT
+# Machine-Translation-Romanian-Dialects
 A spoken language is a living being. 
 Is it possible to crawl different newspapers from different regions and observe the language differences? 
 There is a corpus of Romanian dialectal varieties, how can this corpus be used to influence the output of an NMT system? (think of a language model fine-tuned on different dialects)
