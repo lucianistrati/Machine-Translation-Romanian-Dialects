@@ -33,6 +33,10 @@ data_test = (
     (
         "A aranjat camera.",
         "aranjă camera."
+    ),
+    (
+        "Voi ați crezut in mine.",
+        "Voi crezurăţi in mine."
     )
 )
 
