@@ -24,14 +24,14 @@ import random
 import spacy
 from src.load_data import load_data
 nlp = spacy.load("ro_core_news_sm")
-
+from tqdm import tqdm
 
 def main():
     texts = []
     for file in sorted(os.listdir("data/books")):
         filepath = os.path.join("data/books", file)
         lines = load_data(filepath, to_str=False)
-        for line in lines:
+        for line in tqdm(lines):
             doc = nlp(line)
             sentence = ""
             for token in doc:
@@ -40,7 +40,15 @@ def main():
                     texts.append(sentence)
                     sentence = ""
 
-    texts = [document_preprocess(text) for text in texts]
+    texts_ = []
+    for text in texts:
+        try:
+            processed_text = document_preprocess(text)
+        except:
+            continue
+        texts_.append(processed_text)
+    texts = texts_
+    # texts = [document_preprocess(text) for text in texts]
 
     print(multiprocessing.cpu_count())
 

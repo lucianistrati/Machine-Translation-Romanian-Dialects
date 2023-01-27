@@ -1,8 +1,11 @@
+from scipy.spatial.transform import rotation
+
 from src.load_data import load_data
 from nltk.tokenize import word_tokenize
 from tqdm import tqdm
 
 import numpy as np
+
 
 def main():
     a = set(np.load("data/ardelean_words.npy", allow_pickle=True).tolist())
@@ -11,14 +14,13 @@ def main():
     d = set(np.load("data/moldovean_words.npy", allow_pickle=True).tolist())
     e = set(np.load("data/oltean_words.npy", allow_pickle=True).tolist())
 
-
     unknown_dialects_books = ['data/books/Radu-Rosetti_Parintele-Zosim.pdf',
                               'data/books/povestipopulareromanesti1.pdf',
                               'data/books/101-Basme-Romanesti.pdf',
                               'data/books/Comorile poporului_Radulescu Constantin_Bucuresti_1930.pdf',
                               'data/books/Pop_Mihai_Obiceiuri_traditionale_romanesti_1999.pdf']
 
-    def iou(x, y, n = 5, only_word_n_characters_long: bool =True):
+    def iou(x, y, n=4, only_word_n_characters_long: bool = True):
         if only_word_n_characters_long:
             to_remove = set()
             for elem in x:
@@ -51,9 +53,8 @@ def main():
             if det_iou > highest_iou:
                 highest_iou = det_iou
                 dialect_name = dialect
-        print(book_path, dialect_name, highest_iou, ious)
+        print(book_path, dialect_name, highest_iou, {k: v for (k, v) in zip(dialects, ious)})
         print("*" * 50)
-
 
     import spacy
 
@@ -83,7 +84,6 @@ def main():
             v[i] = b
         return v
 
-
     # v = convert_all_words_to_lemma(v)
 
     mat = [[0 for _ in range(len(v))] for _ in range(len(v))]
@@ -101,4 +101,26 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    import matplotlib.pyplot as plt
+    import numpy as np
+
+    dialects = ["ardelean", "banatean", "maramuresean", "moldovean", "oltean"]
+
+    fig, ax = plt.subplots(1, 1)
+    # a = np.random.random((16, 16))
+    a = [[1.0, 0.3177, 0.2981, 0.0302, 0.0869],
+         [0.3177, 1.0, 0.2934, 0.0284, 0.0855],
+         [0.2981, 0.2934, 1.0, 0.0506, 0.1225],
+         [0.0302, 0.0284, 0.0506, 1.0, 0.1396],
+         [0.0869, 0.0855, 0.1225, 0.1396, 1.0]]
+    plt.imshow(a, cmap='hot', interpolation='nearest')
+    # plt.xticks(dialects, rotation="vertical")
+    # plt.yticks(dialects, rotation="vertical")
+    fontdict = {'verticalalignment': 'baseline'}
+
+    ax.set_xticks([0,1,2,3,4])
+    ax.set_yticks([0,1,2,3,4])
+    ax.set_xticklabels(dialects, rotation=15)
+    ax.set_yticklabels(dialects)#, rotation="horizontal")
+    plt.savefig("dialects_similarities.png")
+    plt.show()

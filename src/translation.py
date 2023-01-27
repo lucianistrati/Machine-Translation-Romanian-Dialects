@@ -252,22 +252,34 @@ def main():
     infer_dialect = True
 
     text = "Ana are două picioare"
-    print(translate(text, "formal", "moldovean", modality="text", infer_dialect=infer_dialect))
+    print("*" * 50)
+    print("Before translation: ", text)
+    print("After translation: ", translate(text, "formal", "moldovean", modality="text", infer_dialect=infer_dialect))
 
     text = "Ion este pilot"
-    print(translate(text, "formal", "moldovean", modality="text", infer_dialect=infer_dialect))
+    print("*" * 50)
+    print("Before translation: ", text)
+    print("After translation: ", translate(text, "formal", "moldovean", modality="text", infer_dialect=infer_dialect))
 
     text = "No apăi unde merem amu?"
-    print(translate(text, "ardelean", "formal", modality="text", infer_dialect=infer_dialect))
+    print("*" * 50)
+    print("Before translation: ", text)
+    print("After translation: ", translate(text, "ardelean", "formal", modality="text", infer_dialect=infer_dialect))
 
     text = "Eu trecui prin fata casei."
-    print(translate(text, "oltean", "formal", modality="text", infer_dialect=infer_dialect))
+    print("*" * 50)
+    print("Before translation: ", text)
+    print("After translation: ", translate(text, "oltean", "formal", modality="text", infer_dialect=infer_dialect))
 
     text = "Și fași uăi?"
-    print(translate(text, "moldovean", "formal", modality="text", infer_dialect=infer_dialect))
+    print("*" * 50)
+    print("Before translation: ", text)
+    print("After translation: ", translate(text, "moldovean", "formal", modality="text", infer_dialect=infer_dialect))
 
     text = "Nu am decât zece lei la mine. Mă duc pă oraș mai pă seară, dupe mă duc acasă."
-    print(translate(text, "formal", "ardelean", modality="text", infer_dialect=infer_dialect))
+    print("*" * 50)
+    print("Before translation: ", text)
+    print("After translation: ", translate(text, "formal", "ardelean", modality="text", infer_dialect=infer_dialect))
 
 
 if __name__ == "__main__":
