@@ -6,7 +6,7 @@ from pathlib import Path
 import pandas as pd
 from spacy.matcher import Matcher
 
-nlp = spacy.load("ro_core_news_sm")
+nlp = spacy.load("ro_core_news_lg")
 folder = Path(__file__).parent
 conjugation = pd.read_json(os.path.join(folder, 'conjugari.json'))
 verbs = pd.read_json(os.path.join(folder, 'verbe.json'))
