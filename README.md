@@ -15,7 +15,7 @@ Checklist:
 - Any idea that relates to dialects and MT
 
 Google Docs link with the plan: https://docs.google.com/document/d/1D59hMCQY28zk-DBHSgYCQkGqyU_LoACPpFt4yuIClCc/edit?usp=sharing
-Use the project {#use-the-project .unnumbered}
+Use the project
 ===============
 
 1.  Download the code from this public repository
@@ -77,7 +77,7 @@ Use the project {#use-the-project .unnumbered}
     mistakes and refactor code. Due to a lack of data we found it hard
     to evaluate it automatically.
 
-Introduction {#section:intro}
+Introduction
 ============
 
 Because there are very few analyses at sub-dialect level in Romanian we
@@ -155,7 +155,7 @@ Claudiu Creanga learned how to:
 
 -   train models for dialect detection;
 
-Approach {#section:approach}
+Approach
 ========
 
 The code is public and can be used from here:
@@ -172,7 +172,7 @@ used:
 
 The training was done in Google collab.
 
-Limitations {#section:limitations}
+Limitations
 ===========
 
 The biggest limitation we have is that we didn't manage to use the full
@@ -183,7 +183,7 @@ Regarding our Speech-to-Text task, there were only a few tools available
 in Romanian: Google, Sonix-ai and Vatis-tech. All 3 tools required a
 paid subscription after the first couple of minutes of free use.
 
-Conclusions and Future Work {#section:conclusions}
+Conclusions and Future Work
 ===========================
 
 We liked the project because it provided us the opportunity to do novel
